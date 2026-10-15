@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sameer Khan Pathan</title>
+<meta name="description" content="Sameer Khan Pathan, senior Java full stack and cloud engineer in Dallas, TX. Event-driven microservices, Kafka, Spring Boot, AWS, GCP and Kubernetes.">
+<meta property="og:title" content="Sameer Khan Pathan, Senior Java Full Stack & Cloud Engineer">
+<meta property="og:description" content="Backend systems that stay correct when retries, failures and traffic pile up.">
+<meta property="og:url" content="https://sameerkhanpathan.com">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232F5BEA'/><text x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'>SK</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EEF1F5;
+  --surface: #FFFFFF;
+  --ink: #18202C;
+  --steel: #56657A;
+  --line: #D5DCE5;
+  --signal: #2F5BEA;
+  --signal-soft: #E1E8FD;
+  --ok: #17845A;
+  --ok-soft: #DDF3EA;
+  --fail: #C23E2B;
+  --fail-soft: #FBE3DF;
+  --wait: #B7791F;
+  --sans: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius-lg: 18px;
+  --radius-sm: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121821;
+    --surface: #1A222D;
+    --ink: #E8EDF4;
+    --steel: #9AA8BA;
+    --line: #2C3746;
+    --signal: #7C9BFF;
+    --signal-soft: #22305A;
+    --ok: #4CC891;
+    --ok-soft: #173A2D;
+    --fail: #FF8A75;
+    --fail-soft: #44221D;
+    --wait: #E6AE4E;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121821; --surface: #1A222D; --ink: #E8EDF4; --steel: #9AA8BA; --line: #2C3746;
+  --signal: #7C9BFF; --signal-soft: #22305A; --ok: #4CC891; --ok-soft: #173A2D;
+  --fail: #FF8A75; --fail-soft: #44221D; --wait: #E6AE4E;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--signal); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+/* Header */
+.top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 0;
+}
+.brand { font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.top nav { display: flex; gap: 22px; }
+.top nav a { color: var(--steel); text-decoration: none; font-weight: 500; font-size: 15px; }
+.top nav a:hover { color: var(--ink); }
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 56px;
+  align-items: center;
+  padding: 48px 0 88px;
+}
+.who { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+.avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--signal); color: var(--surface);
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 24px; letter-spacing: 0.02em;
+  overflow: hidden; flex: none;
+  box-shadow: 0 0 0 4px var(--surface), 0 0 0 5px var(--line);
+}
+.avatar { position: relative; }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.who-name { font-weight: 700; font-size: 19px; line-height: 1.25; }
+.who-role { color: var(--steel); font-size: 15px; }
+h1 {
+  font-size: clamp(38px, 5.2vw, 62px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  margin: 0 0 22px;
+  max-width: 14ch;
+}
+.lede { color: var(--steel); font-size: 19px; max-width: 46ch; margin: 0 0 32px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px; border-radius: 999px;
+  font: 600 16px/1 var(--sans); text-decoration: none; cursor: pointer;
+  border: 1.5px solid transparent;
+}
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--signal); color: var(--surface); }
+.btn-ghost { border-color: var(--line); color: var(--ink); background: var(--surface); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn svg { width: 18px; height: 18px; }
+
+/* Saga demo */
+.demo {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: 0 30px 60px -40px rgba(24, 32, 44, 0.45);
+}
+.demo-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+.demo-title { font-weight: 700; font-size: 16px; }
+.demo-sub { color: var(--steel); font-size: 14px; }
+.lanes {
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+  margin-bottom: 16px;
+}
+.node {
+  border: 1.5px solid var(--line); border-radius: 12px;
+  padding: 12px 10px; text-align: center; background: var(--paper);
+  transition: border-color .25s, background .25s;
+  min-width: 0;
+}
+.node b { display: block; font-size: 14px; }
+.node span { display: block; color: var(--steel); font-size: 12.5px; }
+.node.active { border-color: var(--signal); background: var(--signal-soft); }
+.wire {
+  position: relative; height: 34px; margin: 0 0 6px;
+}
+.wire::before {
+  content: ""; position: absolute; left: 16.6%; right: 16.6%; top: 50%;
+  border-top: 2px dashed var(--line);
+}
+.packet {
+  position: absolute; top: 50%; left: 16.6%;
+  transform: translate(-50%, -50%);
+  padding: 4px 10px; border-radius: 999px;
+  font: 500 12px/1.3 var(--mono);
+  background: var(--signal); color: var(--surface);
+  white-space: nowrap; opacity: 0;
+  transition: left .9s cubic-bezier(.5,0,.2,1), opacity .2s, background .2s;
+}
+.controls {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: end;
+  padding: 14px; border-radius: 12px; background: var(--paper);
+  margin-bottom: 14px;
+}
+.controls label { font-size: 14px; color: var(--steel); display: block; margin-bottom: 6px; }
+.amount-row { display: flex; align-items: center; gap: 12px; }
+.amount-row output { font: 600 18px/1 var(--sans); min-width: 84px; font-variant-numeric: tabular-nums; }
+input[type="range"] { width: 100%; accent-color: var(--signal); }
+.hint { font-size: 13px; color: var(--steel); margin-top: 6px; }
+.run { white-space: nowrap; }
+.run:disabled { opacity: .55; cursor: wait; }
+.log {
+  font: 400 12.5px/1.65 var(--mono);
+  background: var(--paper); border-radius: 12px; padding: 12px 14px;
+  min-height: 150px; max-height: 190px; overflow: auto;
+  color: var(--steel);
+}
+.log div { white-space: pre-wrap; word-break: break-word; }
+.log .t-ok { color: var(--ok); }
+.log .t-fail { color: var(--fail); }
+.log .t-wait { color: var(--wait); }
+.log .t-ink { color: var(--ink); }
+.status {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-size: 13px; font-weight: 600; background: var(--paper); color: var(--steel);
+}
+.status.ok { background: var(--ok-soft); color: var(--ok); }
+.status.fail { background: var(--fail-soft); color: var(--fail); }
+.status.wait { background: var(--signal-soft); color: var(--signal); }
+
+/* Sections */
+section { padding: 72px 0; border-top: 1px solid var(--line); }
+h2 { font-size: clamp(28px, 3.4vw, 38px); letter-spacing: -0.025em; line-height: 1.15; margin: 0 0 12px; font-weight: 750; }
+.section-intro { color: var(--steel); max-width: 60ch; margin: 0 0 40px; }
+
+/* Featured project */
+.project {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 36px;
+}
+.project h3 { font-size: 26px; letter-spacing: -0.02em; margin: 0 0 10px; }
+.project p { margin: 0 0 18px; color: var(--steel); }
+.stack { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 0; list-style: none; }
+.stack li { font-size: 13.5px; padding: 4px 10px; border-radius: 999px; background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+.decisions { margin: 0; padding: 0; list-style: none; }
+.decisions li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.decisions li:first-child { padding-top: 0; }
+.decisions li:last-child { border-bottom: 0; }
+.decisions b { display: block; font-size: 15.5px; }
+.decisions span { color: var(--steel); font-size: 15px; }
+
+.upcoming { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.upcoming article {
+  padding: 22px; border-radius: 14px; border: 1.5px dashed var(--line);
+}
+.upcoming h4 { margin: 0 0 6px; font-size: 17px; }
+.upcoming p { margin: 0; color: var(--steel); font-size: 15px; }
+.upcoming .soon { font-size: 13px; color: var(--signal); font-weight: 600; margin-top: 10px; display: block; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 48px; }
+.skills h3 { font-size: 17px; margin: 0 0 8px; }
+.skills p { margin: 0; color: var(--steel); font-size: 15.5px; }
+
+/* Approach */
+.approach { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 56px; max-width: 920px; }
+.approach h3 { font-size: 19px; margin: 0 0 6px; letter-spacing: -0.01em; }
+.approach p { margin: 0; color: var(--steel); }
+
+/* Contact */
+.contact {
+  background: var(--ink); color: var(--paper);
+  border-radius: var(--radius-lg); padding: 56px;
+  display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; align-items: end;
+}
+.contact h2 { color: var(--paper); max-width: 16ch; }
+.contact p { color: color-mix(in srgb, var(--paper) 72%, transparent); margin: 0; max-width: 44ch; }
+.contact-links { display: grid; gap: 10px; }
+.contact-links a {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 14px 18px; border-radius: 12px;
+  color: var(--paper); text-decoration: none; font-weight: 600;
+  border: 1px solid color-mix(in srgb, var(--paper) 22%, transparent);
+  min-width: 0;
+}
+.contact-links a span { color: color-mix(in srgb, var(--paper) 65%, transparent); font-weight: 400; font-size: 14.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.contact-links a:hover { background: color-mix(in srgb, var(--paper) 10%, transparent); }
+.contact-links a:focus-visible { outline-color: var(--paper); }
+footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.theme-toggle { background: none; border: 1px solid var(--line); color: var(--steel); border-radius: 999px; padding: 6px 14px; font: 500 14px var(--sans); cursor: pointer; }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 24px; }
+  .project { grid-template-columns: 1fr; padding: 26px; gap: 28px; }
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .upcoming { grid-template-columns: 1fr; }
+  .contact { grid-template-columns: 1fr; padding: 36px 26px; }
+}
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .top nav { gap: 14px; }
+  .top nav a:nth-child(3) { display: none; }
+  .skills, .approach { grid-template-columns: 1fr; gap: 24px; }
+  section { padding: 56px 0; }
+  .demo { padding: 16px; }
+  .controls { grid-template-columns: 1fr; }
+  .node b { font-size: 13px; }
+  .node span { font-size: 11.5px; }
+  .packet { font-size: 11px; padding: 3px 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .packet, .node { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#">Sameer Khan Pathan</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <div class="who">
+          <div class="avatar" aria-hidden="true">
+            <img src="photo.jpg" alt="" onerror="this.remove()">
+            SK
+          </div>
+          <div>
+            <div class="who-name">Sameer Khan Pathan</div>
+            <div class="who-role">Senior Java Full Stack &amp; Cloud Engineer, Dallas, TX</div>
+          </div>
+        </div>
+        <h1>Backend systems that stay correct when things go wrong.</h1>
+        <p class="lede">I design and build Java microservices, event streams and cloud platforms for high-volume transactions, where retries, partial failures and traffic spikes are normal, not exceptional.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:sameerkhanp804@gmail.com">Email me</a>
+          <a class="btn btn-ghost" href="https://github.com/sameerkhanp119-dot" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            GitHub
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/sameer-khan-pathan-2597b2362" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="demo" aria-labelledby="demo-title">
+        <div class="demo-head">
+          <div>
+            <div class="demo-title" id="demo-title">Try the order saga</div>
+            <div class="demo-sub">A live model of my commerce-order-platform project</div>
+          </div>
+          <span class="status" id="status" role="status">Idle</span>
+        </div>
+        <div class="lanes" aria-hidden="true">
+          <div class="node" id="n-order"><b>order-service</b><span>Postgres + outbox</span></div>
+          <div class="node" id="n-kafka"><b>Kafka</b><span>keyed by order id</span></div>
+          <div class="node" id="n-pay"><b>payment-service</b><span>idempotent charge</span></div>
+        </div>
+        <div class="wire" aria-hidden="true"><div class="packet" id="packet">OrderCreated</div></div>
+        <div class="controls">
+          <div>
+            <label for="amount">Order total</label>
+            <div class="amount-row">
+              <input type="range" id="amount" min="50" max="2000" step="25" value="425">
+              <output id="amount-out" for="amount">$425</output>
+            </div>
+            <div class="hint">The payment simulator declines anything over $1,000, so you can watch the compensation path.</div>
+          </div>
+          <button class="btn btn-primary run" id="run" type="button">Place order</button>
+        </div>
+        <div class="log" id="log" aria-live="polite"><div>Place an order to see each event as it moves between services.</div></div>
+      </div>
+    </div>
+
+    <section id="work">
+      <h2>Selected work</h2>
+      <p class="section-intro">Open-source projects that show how I approach the problems I solve at work: consistency across services, safe retries, and systems you can operate at 3 a.m.</p>
+
+      <div class="project">
+        <div>
+          <h3>commerce-order-platform</h3>
+          <p>Order and payment microservices that stay consistent without distributed transactions. An order is accepted, payment is attempted, and the order is either confirmed or cancelled, coordinated through Kafka with a choreography saga.</p>
+          <ul class="stack" aria-label="Technologies">
+            <li>Java 21</li><li>Spring Boot 3</li><li>Apache Kafka</li><li>PostgreSQL</li><li>Flyway</li><li>Redis</li><li>Docker</li><li>Kubernetes</li><li>GitHub Actions</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-ghost" href="https://github.com/sameerkhanp119-dot/commerce-order-platform" target="_blank" rel="noopener">View the code</a>
+          </div>
+        </div>
+        <ul class="decisions">
+          <li><b>No lost or phantom events</b><span>A transactional outbox writes each event in the same database transaction as the order, then relays it to Kafka.</span></li>
+          <li><b>Retries never double-charge</b><span>Idempotency keys on the API and unique constraints in each consumer make every step safe to repeat.</span></li>
+          <li><b>Failures compensate cleanly</b><span>A declined payment cancels the order automatically; poison messages go to a dead-letter topic instead of blocking a partition.</span></li>
+          <li><b>Ready to run in production</b><span>Health probes, autoscaling, disruption budgets, Prometheus metrics and a CI pipeline that publishes images.</span></li>
+        </ul>
+      </div>
+
+      <div class="upcoming">
+        <article>
+          <h4>api-gateway-auth</h4>
+          <p>Spring Cloud Gateway with OAuth2 and JWT, per-client rate limits and circuit breakers.</p>
+          <span class="soon">In progress</span>
+        </article>
+        <article>
+          <h4>realtime-event-analytics</h4>
+          <p>Kafka streams processed and landed in BigQuery, orchestrated with Airflow.</p>
+          <span class="soon">In progress</span>
+        </article>
+        <article>
+          <h4>cloud-platform-terraform</h4>
+          <p>Reusable Terraform modules for EKS and GKE with a GitOps deployment pipeline.</p>
+          <span class="soon">In progress</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>What I work with</h2>
+      <p class="section-intro">Full stack, with most of my depth on the backend and the platform underneath it.</p>
+      <div class="skills">
+        <div><h3>Backend</h3><p>Java 8 through 21, Spring Boot, Spring Cloud, Spring Security, Hibernate and JPA, REST, GraphQL, Node.js</p></div>
+        <div><h3>Messaging</h3><p>Apache Kafka, RabbitMQ, IBM MQ, event-driven design, saga and outbox patterns, dead-letter handling</p></div>
+        <div><h3>Cloud and platform</h3><p>AWS (EKS, ECS, Lambda, RDS, S3), Azure (AKS, App Service, Functions), GCP (GKE, BigQuery, Pub/Sub), Terraform</p></div>
+        <div><h3>Data</h3><p>PostgreSQL, Oracle, SQL Server, MySQL, MongoDB, Cassandra, DynamoDB, Redis, query and index tuning</p></div>
+        <div><h3>Frontend</h3><p>Angular, React, TypeScript, Redux, RxJS, Material UI, accessible and responsive interfaces</p></div>
+        <div><h3>Delivery and operations</h3><p>Docker, Kubernetes, GitHub Actions, Jenkins, GitLab CI, JUnit, Mockito, Selenium, Prometheus, Grafana, ELK, Splunk</p></div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <h2>How I work</h2>
+      <p class="section-intro">The habits teams have told me they value most.</p>
+      <div class="approach">
+        <div><h3>Design for the failure case first</h3><p>Every network call can time out and every message can arrive twice. I make that explicit in the design instead of finding it in production.</p></div>
+        <div><h3>Make it observable</h3><p>Metrics, structured logs and alerts ship with the feature, so on-call engineers can answer “what happened” in minutes.</p></div>
+        <div><h3>Leave it simpler than I found it</h3><p>Clear module boundaries, honest naming and tests that describe behavior make the next change cheaper.</p></div>
+        <div><h3>Raise the team</h3><p>I review code to teach, write the design doc before the code, and pair on the hard parts.</p></div>
+      </div>
+    </section>
+
+    <section id="contact" style="border-top:0">
+      <div class="contact">
+        <div>
+          <h2>Have a backend that needs to scale or stop breaking?</h2>
+          <p>I'm available for senior Java, full stack and cloud engineering roles. The quickest way to reach me is email.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:sameerkhanp804@gmail.com">Email <span>sameerkhanp804@gmail.com</span></a>
+          <a href="https://www.linkedin.com/in/sameer-khan-pathan-2597b2362" target="_blank" rel="noopener">LinkedIn <span>sameer-khan-pathan</span></a>
+          <a href="https://github.com/sameerkhanp119-dot" target="_blank" rel="noopener">GitHub <span>sameerkhanp119-dot</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year">2026</span> Sameer Khan Pathan, Dallas, TX</span>
+    <button class="theme-toggle" id="theme" type="button">Switch to dark</button>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  $('year').textContent = new Date().getFullYear();
+
+  // Theme toggle (remembered per browser when storage is available)
+  var root = document.documentElement, themeBtn = $('theme');
+  function isDark() {
+    var t = root.getAttribute('data-theme');
+    return t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function syncThemeLabel() { themeBtn.textContent = isDark() ? 'Switch to light' : 'Switch to dark'; }
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  syncThemeLabel();
+  themeBtn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    syncThemeLabel();
+  });
+
+  // Saga demo
+  var amount = $('amount'), out = $('amount-out'), run = $('run'), log = $('log'),
+      packet = $('packet'), status = $('status');
+  var nodes = { order: $('n-order'), kafka: $('n-kafka'), pay: $('n-pay') };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var LIMIT = 1000;
+  var fmt = function (v) { return '$' + Number(v).toLocaleString('en-US'); };
+  amount.addEventListener('input', function () { out.textContent = fmt(amount.value); });
+
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, reduce ? 0 : ms); }); }
+  function line(text, cls) {
+    var d = document.createElement('div');
+    d.textContent = text;
+    if (cls) d.className = cls;
+    log.appendChild(d);
+    log.scrollTop = log.scrollHeight;
+  }
+  function activate(key) {
+    Object.keys(nodes).forEach(function (k) { nodes[k].classList.toggle('active', k === key); });
+  }
+  function setStatus(text, cls) { status.textContent = text; status.className = 'status' + (cls ? ' ' + cls : ''); }
+  function movePacket(label, color, pos) {
+    packet.textContent = label;
+    packet.style.background = color;
+    packet.style.opacity = 1;
+    packet.style.left = pos;
+  }
+  function uid() { return Math.random().toString(16).slice(2, 10); }
+
+  run.addEventListener('click', async function () {
+    var total = Number(amount.value), id = uid(), css = getComputedStyle(root);
+    var signal = css.getPropertyValue('--signal').trim(),
+        ok = css.getPropertyValue('--ok').trim(),
+        fail = css.getPropertyValue('--fail').trim();
+    run.disabled = true;
+    log.innerHTML = '';
+    packet.style.transition = 'none'; packet.style.left = '16.6%'; packet.style.opacity = 0;
+    void packet.offsetWidth; packet.style.transition = '';
+
+    setStatus('Pending payment', 'wait');
+    activate('order');
+    line('POST /api/v1/orders  Idempotency-Key: ' + id, 't-ink');
+    await wait(500);
+    line('order ' + id + ' saved PENDING_PAYMENT, total ' + fmt(total));
+    line('outbox row OrderCreated written in the same transaction');
+    await wait(600);
+
+    activate('kafka');
+    movePacket('OrderCreated', signal, '50%');
+    line('relay -> commerce.order.events.v1  key=' + id, 't-wait');
+    await wait(1000);
+
+    activate('pay');
+    movePacket('OrderCreated', signal, '83.4%');
+    await wait(900);
+    var approved = total <= LIMIT;
+    if (approved) {
+      line('charge approved, payment saved, PaymentCompleted -> outbox', 't-ok');
+    } else {
+      line('charge declined: amount exceeds limit of $1,000', 't-fail');
+      line('payment saved DECLINED, PaymentFailed -> outbox');
+    }
+    await wait(600);
+
+    activate('kafka');
+    movePacket(approved ? 'PaymentCompleted' : 'PaymentFailed', approved ? ok : fail, '50%');
+    line('relay -> commerce.payment.events.v1  key=' + id, 't-wait');
+    await wait(1000);
+
+    activate('order');
+    movePacket(approved ? 'PaymentCompleted' : 'PaymentFailed', approved ? ok : fail, '16.6%');
+    await wait(900);
+    if (approved) {
+      line('order ' + id + ' CONFIRMED, cache evicted', 't-ok');
+      setStatus('Confirmed', 'ok');
+    } else {
+      line('compensation: order ' + id + ' CANCELLED', 't-fail');
+      setStatus('Cancelled', 'fail');
+    }
+    packet.style.opacity = 0;
+    activate(null);
+    run.disabled = false;
+    run.textContent = 'Place another order';
+  });
+})();
+</script>
+</body>
+</html>
