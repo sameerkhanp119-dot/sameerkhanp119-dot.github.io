@@ -226,6 +226,9 @@ h2 { font-size: clamp(28px, 3.4vw, 38px); letter-spacing: -0.025em; line-height:
 }
 .upcoming h4 { margin: 0 0 6px; font-size: 17px; }
 .upcoming p { margin: 0; color: var(--steel); font-size: 15px; }
+.upcoming article.live { border-style: solid; background: var(--surface); }
+.upcoming h4 a { color: var(--ink); text-decoration: none; }
+.upcoming h4 a:hover { color: var(--signal); text-decoration: underline; }
 .upcoming .soon { font-size: 13px; color: var(--signal); font-weight: 600; margin-top: 10px; display: block; }
 
 /* Skills */
@@ -375,10 +378,10 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
       </div>
 
       <div class="upcoming">
-        <article>
-          <h4>api-gateway-auth</h4>
-          <p>Spring Cloud Gateway with OAuth2 and JWT, per-client rate limits and circuit breakers.</p>
-          <span class="soon">In progress</span>
+        <article class="live">
+          <h4><a href="https://github.com/sameerkhanp119-dot/api-gateway-auth" target="_blank" rel="noopener">api-gateway-auth</a></h4>
+          <p>OAuth2 authorization server and Spring Cloud Gateway: scope-based access, per-client rate limits, circuit breakers and correlation ids.</p>
+          <span class="soon">Live on GitHub</span>
         </article>
         <article>
           <h4>realtime-event-analytics</h4>
