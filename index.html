@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sameer Khan Pathan</title>
-<meta name="description" content="Sameer Khan Pathan, senior Java full stack and cloud engineer in United States. Event-driven microservices, Kafka, Spring Boot, AWS, GCP and Kubernetes.">
+<meta name="description" content="Sameer Khan Pathan, senior Java full stack and cloud engineer in Dallas, TX. Event-driven microservices, Kafka, Spring Boot, AWS, GCP and Kubernetes.">
 <meta property="og:title" content="Sameer Khan Pathan, Senior Java Full Stack & Cloud Engineer">
 <meta property="og:description" content="Backend systems that stay correct when retries, failures and traffic pile up.">
 <meta property="og:url" content="https://sameerkhanpathan.com">
@@ -286,6 +286,12 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
 @media (prefers-reduced-motion: reduce) {
   .packet, .node { transition: none; }
 }
+.experience-list { display: grid; gap: 14px; margin-top: 28px; }
+.experience-item { display: grid; grid-template-columns: 180px minmax(0,1fr); gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); }
+.experience-item h3 { margin: 0 0 6px; font-size: 19px; }
+.experience-item p { margin: 0; color: var(--steel); }
+.experience-date { font: 500 13px/1.6 var(--mono); color: var(--steel); }
+@media (max-width: 700px) { .experience-item { grid-template-columns: 1fr; gap: 5px; } }
 </style>
 </head>
 <body>
@@ -294,6 +300,7 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
     <a class="brand" href="#">Sameer Khan Pathan</a>
     <nav aria-label="Main">
       <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#approach">Approach</a>
       <a href="#contact">Contact</a>
@@ -310,11 +317,11 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
           </div>
           <div>
             <div class="who-name">Sameer Khan Pathan</div>
-            <div class="who-role">Senior Java Full Stack &amp; Cloud Engineer, United States</div>
+            <div class="who-role">Senior Java Full Stack &amp; Cloud Engineer, Dallas, TX</div>
           </div>
         </div>
-        <h1>Backend systems that stay correct when things go wrong.</h1>
-        <p class="lede">I design and build Java microservices, event streams and cloud platforms for high-volume transactions, where retries, partial failures and traffic spikes are normal, not exceptional.</p>
+        <h1>10+ years building reliable enterprise software.</h1>
+        <p class="lede">Senior Java Full Stack Engineer with 10+ years of experience delivering enterprise applications across retail, payments, healthcare, travel and SaaS. I specialize in Java, Spring Boot, Angular, React, event-driven systems and cloud platforms.</p>
         <div class="actions">
           <a class="btn btn-primary" href="mailto:sameerkhanp804@gmail.com">Email me</a>
           <a class="btn btn-ghost" href="https://github.com/sameerkhanp119-dot" target="_blank" rel="noopener">
@@ -396,6 +403,18 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
       </div>
     </section>
 
+    <section id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title">Professional experience</h2>
+      <p class="section-intro">10+ years delivering enterprise software across multiple industries. Public GitHub repositories are independent demonstration projects, not proprietary client source code.</p>
+      <div class="experience-list">
+        <article class="experience-item"><span class="experience-date">Aug 2024 – Present</span><div><h3>Senior Full Stack Developer · Target</h3><p>Retail and e-commerce platforms using Java 17, Spring Boot, Angular 16, Kafka and AWS.</p></div></article>
+        <article class="experience-item"><span class="experience-date">Oct 2022 – Jul 2024</span><div><h3>Senior Full Stack Developer · Visa</h3><p>Payments and financial services with Java, Spring Boot, React, TypeScript, Azure and RabbitMQ.</p></div></article>
+        <article class="experience-item"><span class="experience-date">Dec 2020 – Sep 2022</span><div><h3>Java Full Stack Developer · Cigna</h3><p>Healthcare applications with Spring Boot, Angular, GCP and HL7/FHIR integrations.</p></div></article>
+        <article class="experience-item"><span class="experience-date">Jan 2018 – Nov 2020</span><div><h3>Java Full Stack Developer · United Airlines</h3><p>Travel, booking and loyalty systems using Java, Spring Boot, Angular and AWS.</p></div></article>
+        <article class="experience-item"><span class="experience-date">Dec 2015 – Nov 2017</span><div><h3>Software Developer · Zoho</h3><p>Enterprise applications using Java, Spring MVC, Hibernate, JSP and Servlets.</p></div></article>
+      </div>
+    </section>
+
     <section id="skills">
       <h2>What I work with</h2>
       <p class="section-intro">Full stack across the Java ecosystem and all three major clouds, with most of my depth on the backend and the platform underneath it.</p>
@@ -439,7 +458,7 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
   </main>
 
   <footer>
-    <span>© <span id="year">2026</span> Sameer Khan Pathan, United States</span>
+    <span>© <span id="year">2026</span> Sameer Khan Pathan, Dallas, TX</span>
     <button class="theme-toggle" id="theme" type="button">Switch to dark</button>
   </footer>
 </div>
