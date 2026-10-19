@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sameer Khan Pathan</title>
+<title>Sameer Khan Pathan | Senior Java Full Stack Engineer</title>
 <meta name="description" content="Sameer Khan Pathan, senior Java full stack and cloud engineer in Dallas, TX. Event-driven microservices, Kafka, Spring Boot, AWS, GCP and Kubernetes.">
 <meta property="og:title" content="Sameer Khan Pathan, Senior Java Full Stack & Cloud Engineer">
 <meta property="og:description" content="Backend systems that stay correct when retries, failures and traffic pile up.">
 <meta property="og:url" content="https://sameerkhanpathan.com">
+<link rel="canonical" href="https://sameerkhanpathan.com/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232F5BEA'/><text x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'>SK</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -336,7 +337,7 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
         <div class="demo-head">
           <div>
             <div class="demo-title" id="demo-title">Try the order saga</div>
-            <div class="demo-sub">A live model of my commerce-order-platform project</div>
+            <div class="demo-sub">Interactive browser simulation of the order saga. No backend services or real payments are called.</div>
           </div>
           <span class="status" id="status" role="status">Idle</span>
         </div>
@@ -363,7 +364,7 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
 
     <section id="work">
       <h2>Selected work</h2>
-      <p class="section-intro">Four open-source projects that show how I approach the problems I solve at work: consistency across services, safe retries, and systems you can operate at 3 a.m.</p>
+      <p class="section-intro">Four independent reference projects exploring service consistency, API security, event analytics and cloud infrastructure. Each links to source code and automated checks.</p>
 
       <div class="project">
         <div>
@@ -374,13 +375,14 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
           </ul>
           <div class="actions">
             <a class="btn btn-ghost" href="https://github.com/sameerkhanp119-dot/commerce-order-platform" target="_blank" rel="noopener">View the code</a>
+            <a class="btn btn-ghost" href="https://github.com/sameerkhanp119-dot/commerce-order-platform/actions" target="_blank" rel="noopener">Build &amp; test results</a>
           </div>
         </div>
         <ul class="decisions">
-          <li><b>No lost or phantom events</b><span>A transactional outbox writes each event in the same database transaction as the order, then relays it to Kafka.</span></li>
-          <li><b>Retries never double-charge</b><span>Idempotency keys on the API and unique constraints in each consumer make every step safe to repeat.</span></li>
+          <li><b>Business changes and events commit together</b><span>A transactional outbox writes each event in the same database transaction as the order, then relays it to Kafka.</span></li>
+          <li><b>Design for duplicate delivery</b><span>API idempotency keys and database constraints demonstrate retry handling. Payments use a simulator; real providers also require provider-side idempotency and reconciliation.</span></li>
           <li><b>Failures compensate cleanly</b><span>A declined payment cancels the order automatically; poison messages go to a dead-letter topic instead of blocking a partition.</span></li>
-          <li><b>Ready to run in production</b><span>Health probes, autoscaling, disruption budgets, Prometheus metrics and a CI pipeline that publishes images.</span></li>
+          <li><b>Operational foundations</b><span>Health probes, deployment manifests, metrics and CI provide a starting point. Production readiness still requires deployment, security, load and recovery validation.</span></li>
         </ul>
       </div>
 
@@ -397,7 +399,7 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
         </article>
         <article class="live">
           <h4><a href="https://github.com/sameerkhanp119-dot/cloud-platform-terraform" target="_blank" rel="noopener">cloud-platform-terraform</a></h4>
-          <p>Terraform modules for a private, hardened GKE platform with dev and prod environments and Argo CD GitOps.</p>
+          <p>Reference Terraform modules for private GKE networking, workload identity, separate environment configurations and Argo CD GitOps.</p>
           <span class="soon">Live on GitHub</span>
         </article>
       </div>
@@ -433,7 +435,7 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
 
     <section id="approach">
       <h2>How I work</h2>
-      <p class="section-intro">The habits teams have told me they value most.</p>
+      <p class="section-intro">The engineering principles I bring to design, delivery and review.</p>
       <div class="approach">
         <div><h3>Design for the failure case first</h3><p>Every network call can time out and every message can arrive twice. I make that explicit in the design instead of finding it in production.</p></div>
         <div><h3>Make it observable</h3><p>Metrics, structured logs and alerts ship with the feature, so on-call engineers can answer “what happened” in minutes.</p></div>
