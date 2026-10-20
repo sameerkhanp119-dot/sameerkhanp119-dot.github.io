@@ -293,6 +293,18 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
 .experience-item p { margin: 0; color: var(--steel); }
 .experience-date { font: 500 13px/1.6 var(--mono); color: var(--steel); }
 @media (max-width: 700px) { .experience-item { grid-template-columns: 1fr; gap: 5px; } }
+
+.project-kicker { font: 500 10px/1.6 var(--mono); letter-spacing: 1.3px; color: var(--steel); margin-bottom: 15px; }
+.featured-project { align-items: center; }
+.project-scope { font-size: 12px !important; line-height: 1.7; color: var(--steel); margin: 16px 0 0 !important; }
+.project-review { background: color-mix(in srgb, var(--ok) 5%, var(--surface)); border: 1px solid color-mix(in srgb, var(--ok) 18%, var(--line)); border-radius: 14px; padding: 25px; }
+.review-heading { display: flex; align-items: center; gap: 8px; font: 500 9px/1.7 var(--mono); color: var(--steel); letter-spacing: .5px; margin-bottom: 21px; }
+.review-dot { width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: var(--ok); }
+.project-review .decisions { margin: 0; }
+.review-link { display: inline-block; font-size: 12px; margin-top: 22px; text-underline-offset: 4px; }
+.migration-review { background: color-mix(in srgb, var(--wait) 5%, var(--surface)); border-color: color-mix(in srgb, var(--wait) 18%, var(--line)); }
+.migration-review .review-dot { background: var(--wait); }
+@media(max-width:600px) { .project-review { padding: 19px; } .review-heading { font-size: 8px; } }
 </style>
 </head>
 <body>
@@ -364,11 +376,58 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
 
     <section id="work">
       <h2>Selected work</h2>
-      <p class="section-intro">Four independent reference projects exploring service consistency, API security, event analytics and cloud infrastructure. Each links to source code and automated checks.</p>
+      <p class="section-intro">Six independent engineering projects, with three featured below. Explore working interfaces, migration decisions and service consistency, then inspect the source and automated checks.</p>
+
+      <div class="project featured-project">
+        <div>
+          <div class="project-kicker">01 / FULL-STACK OPERATIONS</div>
+          <h3>Signal Desk</h3>
+          <p>A focused incident operations workbench. Find the signal in a busy queue, investigate an incident, advance its lifecycle and inspect the audit trail.</p>
+          <ul class="stack" aria-label="Technologies"><li>React 19</li><li>Java 17</li><li>Spring Boot</li><li>Spring Security</li><li>REST API</li><li>Vite</li></ul>
+          <div class="actions">
+            <a class="btn btn-primary" href="/demos/incident-operations/">Try the dashboard ↗</a>
+            <a class="btn btn-ghost" href="https://github.com/sameerkhanp119-dot/incident-operations-dashboard" target="_blank" rel="noopener">Source &amp; tests</a>
+          </div>
+          <p class="project-scope">Public demo: synthetic browser data. The repository includes a separate local Spring Boot API.</p>
+        </div>
+        <div class="project-review">
+          <div class="review-heading"><span class="review-dot"></span> DESIGN FOR THE PERSON ON CALL</div>
+          <ul class="decisions">
+            <li><b>Permissions with a clear boundary</b><span>Viewer and operator modes in the UI; server-side role checks and CSRF protection in the local API.</span></li>
+            <li><b>No silent stale updates</b><span>Expected-version checks reject conflicts. Successful state changes append an audit entry with the authenticated actor.</span></li>
+            <li><b>The states around the happy path</b><span>Search, combined filters, pagination, read-only access, empty results and failure feedback.</span></li>
+          </ul>
+          <a class="review-link" href="https://github.com/sameerkhanp119-dot/incident-operations-dashboard/blob/main/docs/architecture.md" target="_blank" rel="noopener">Read the architecture notes →</a>
+        </div>
+      </div>
+
+      <div class="project featured-project">
+        <div>
+          <div class="project-kicker">02 / SYSTEM EVOLUTION</div>
+          <h3>Java Modernization Playbook</h3>
+          <p>Change an implementation without quietly changing the business contract. A runnable pricing migration with characterization tests, shadow comparison, stable canary routing and rollback.</p>
+          <ul class="stack" aria-label="Technologies"><li>Java 17</li><li>JUnit 5</li><li>BigDecimal</li><li>Strangler pattern</li><li>Canary routing</li><li>GitHub Actions</li></ul>
+          <div class="actions">
+            <a class="btn btn-primary" href="/demos/modernization/">Explore the migration lab ↗</a>
+            <a class="btn btn-ghost" href="https://github.com/sameerkhanp119-dot/java-modernization-playbook" target="_blank" rel="noopener">Source &amp; tests</a>
+          </div>
+          <p class="project-scope">Browser lab: illustrative simulation. The repository contains the executable Java implementation.</p>
+        </div>
+        <div class="project-review migration-review">
+          <div class="review-heading"><span class="review-dot"></span> CHANGE THE ENGINE. KEEP THE CONTRACT.</div>
+          <ul class="decisions">
+            <li><b>Characterize before replacing</b><span>Explicit boundary cases and a seeded 10,000-request comparison check discount, rounding and shipping behavior.</span></li>
+            <li><b>Compare before promoting</b><span>Shadow mode preserves the legacy response. Stable SHA-256 buckets make canary cohorts repeatable.</span></li>
+            <li><b>Know what rollback cannot undo</b><span>Read-only fallback and configuration swaps are implemented; data migration and destructive-schema recovery are documented boundaries.</span></li>
+          </ul>
+          <a class="review-link" href="https://github.com/sameerkhanp119-dot/java-modernization-playbook/blob/main/docs/migration-plan.md" target="_blank" rel="noopener">Read the rollout and rollback plan →</a>
+        </div>
+      </div>
 
       <div class="project">
         <div>
-          <h3>commerce-order-platform</h3>
+          <div class="project-kicker">03 / DISTRIBUTED CONSISTENCY</div>
+          <h3>Commerce Order Platform</h3>
           <p>Order and payment microservices that stay consistent without distributed transactions. An order is accepted, payment is attempted, and the order is either confirmed or cancelled, coordinated through Kafka with a choreography saga.</p>
           <ul class="stack" aria-label="Technologies">
             <li>Java 21</li><li>Spring Boot 3</li><li>Apache Kafka</li><li>PostgreSQL</li><li>Flyway</li><li>Redis</li><li>Docker</li><li>Kubernetes</li><li>GitHub Actions</li>
@@ -574,3 +633,4 @@ footer { padding: 32px 0 48px; color: var(--steel); font-size: 14px; display: fl
 </script>
 </body>
 </html>
+
